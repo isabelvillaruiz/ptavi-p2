@@ -10,6 +10,8 @@ class calculadora():
 	def minus(self,num1,num2):
 		return num1-num2
 
+class CalculadoraHija():
+
 	def multiply(self,num1,num2):
 		return num1 * num2	
 
@@ -31,12 +33,12 @@ if __name__ == "__main__":
 	elif sys.argv[2] == "resta":
 		result = calculadora().minus(operando1,operando2)
 	elif sys.argv[2] == "multiplica":
-		result =  calculadora().multiply(operando1,operando2)
+		result =  CalculadoraHija().multiply(operando1,operando2)
 	elif sys.argv[2] == "divide" :
 		if operando2 == 0:
 			sys.exit('Division by zero is not allowed')
 		else:
-			result = calculadora().divide(operando1,operando2)
+			result = CalculadoraHija().divide(operando1,operando2)
 	else:
 		sys.exit('This operation is not allowed ')
 
