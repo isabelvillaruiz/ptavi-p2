@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
+
 import sys
 
 
@@ -13,14 +14,15 @@ def minus(op1, op2):
     """ Function to substract the operands """
     return op1 - op2
 
-def multiply(op1,op2):
+
+def multiply(op1, op2):
     """ Function to multiply the operands """
     return op1 * op2
 
-def divide(op1,op2):
+
+def divide(op1, op2):
     """ Function to divide the operands """
     return op1 / op2
-
 
 
 if __name__ == "__main__":
@@ -36,11 +38,10 @@ if __name__ == "__main__":
     elif sys.argv[2] == "resta":
         result = minus(operando1, operando2)
     elif sys.argv[2] == "multiplica":
-        result = multiply(operando1,operando2)
+        result = multiply(operando1, operando2)
     elif sys.argv[2] == "divide":
-        result = divide(operando1,operando2)
+        result = divide(operando1, operando2)
     else:
-        sys.exit('Operación sólo puede ser sumar o restar o multiplicar o dividir')
-
+        sys.exit('Operación solo suma resta multiplica divide')
 
     print(result)
