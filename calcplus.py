@@ -2,52 +2,51 @@
 # -*- coding: utf-8 -*-
 
 import sys
-
-class calculadora():
-	def plus(self,num1,num2):
-		return num1+num2
-
-	def minus(self,num1,num2):
-		return num1-num2
-
-
-class CalculadoraHija(calculadora): #Calculadora Hija hereda de Calculadora plus y minus
-
-
-	def multiply(self,num1,num2):
-		return num1 * num2	
-
-	def divide(self,num1,num2):
-		return num1 / num2
+import calcoohija
 
 
 
-def Operaciones(num1,num2):
-
-	if operacion == "suma":
-		result = calculadora().plus(operando1,operando2)
-	elif operacion == "resta":
-		result = calculadora().minus(operando1,operando2)
-	elif operacion == "multiplica":
-
-		result =  calculadora().multiply(operando1,operando2)
-
-	elif operacion == "divide" :
-		if operando2 == 0:
-			sys.exit('Division by zero is not allowed')
-		else:
-
-			result = calculadora().divide(operando1,operando2)
-	else:
-		sys.exit('This operation is not allowed ')
-
-
-def leerfichero ( fichero , operacion ):
+if __name__ == "__main__":
 	
-	fichero = open('fichero.txt','r')
-	fichero.readline() 
+	calculadora = calcoohija.CalculadoraHija()
+	fichero = open('fichero','r')
+	lineas = fichero.readlines()
+
+	#calculadora = calcoohija.CalculadoraHija()
+
+	for linea in lineas:
+		
+		linea = linea.split(',')
+		operacion = linea[0]		
+		operandos = linea[1:]
+		ultimooperando = operandos[0]
+
+
+		for operando in operandos[1:]:
+			
+			if operacion == "suma":
+				ultimooperando = calculadora.plus(int(ultimooperando),int(operando))
+			elif operacion == "resta":
+				ultimooperando = calculadora.minus(int(ultimooperando),int(operando))
+			elif operacion == "multiplica":
+		
+				ultimooperando =  calculadora.multiply(int(ultimooperando),int(operando))
 	
-	print(fichero.split(','))
+			elif operacion == "divide" :
+				if (ultimooperando or operando) == 0.0:
+					sys.exit('Division by zero is not allowed')
+				else:
+					ultimooperando = calculadora.divide(int(ultimooperando),int(operando))
+			else:
+				sys.exit('This operation is not allowed ')
+
+		print(ultimooperando)
+
+		
+		
+
+
+
 
 
 
